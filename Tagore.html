@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tagore – Custom API Development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #FFFFFF;
+      --light: #F3F3F3;
+      --gray: #939393;
+      --dark: #23242a;
+      --bg: #181818;
+      --accent: #ffd600;
+      --accent-dark: #bfa800;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 0;
+      background: repeating-linear-gradient(
+        to right, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 80px
+      ), repeating-linear-gradient(
+        to bottom, rgba(255,255,255,0.04) 0, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 80px
+      );
+      pointer-events: none;
+    }
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 24px 40px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .brand {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 18px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--gray);
+      margin-bottom: 56px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .copy {
+      font-size: 1.25rem;
+      color: var(--light);
+      margin-bottom: 56px;
+      max-width: 700px;
+      line-height: 1.7;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .copy-main {
+      margin-bottom: 32px;
+    }
+    .copy-emph {
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-top: 0;
+    }
+    .plans-row {
+      display: flex;
+      gap: 40px;
+      width: 100%;
+      margin-bottom: 64px;
+      justify-content: flex-start;
+    }
+    .plan {
+      background: var(--dark);
+      border-radius: 16px;
+      flex: 1 1 0;
+      min-width: 240px;
+      max-width: 340px;
+      padding: 48px 32px 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+      border: 2px solid var(--gray);
+      transition: border 0.2s, box-shadow 0.2s;
+      height: 420px;
+    }
+    .plan:hover {
+      border: 2px solid var(--accent);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.08);
+    }
+    .plan-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .plan-price {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--light);
+      margin-bottom: 24px;
+      letter-spacing: 0.01em;
+    }
+    .plan-desc {
+      font-size: 1.08rem;
+      color: var(--gray);
+      line-height: 1.6;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin-bottom: 32px;
+    }
+    .plan-btn {
+      margin-top: auto;
+      display: inline-block;
+      background: var(--accent);
+      color: #181818;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      text-decoration: none;
+      box-shadow: 0 2px 12px rgba(255,214,0,0.10);
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .plan-btn:hover {
+      background: var(--accent-dark);
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(255,214,0,0.18);
+    }
+    .footer {
+      margin-top: 64px;
+      color: var(--gray);
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: left;
+      border-top: 1px solid var(--gray);
+      padding-top: 32px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .footer a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    @media (max-width: 1000px) {
+      .plans-row {
+        flex-direction: column;
+        gap: 28px;
+      }
+      .container {
+        align-items: stretch;
+      }
+      .plan {
+        max-width: 98vw;
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="brand">Tagore</div>
+    <div class="subtitle">Custom API Development</div>
+    <div class="copy">
+      <div class="copy-main">
+        Accelerate your custom AI engine development.<br>
+        Effortlessly connect models, apps, and codebases of any kind—no matter how complex—into a unified, elegant command.
+      </div>
+      <div class="copy-emph">
+        No limits. No excuses. Our APIs turn chaos into clarity.
+      </div>
+    </div>
+    <div class="plans-row">
+      <div class="plan">
+        <div class="plan-title">Starter</div>
+        <div class="plan-price">$999/mo</div>
+        <div class="plan-desc">
+          For visionaries and agile teams. Launch your custom API journey with seamless onboarding, essential integrations, and responsive support.
+        </div>
+        <a class="plan-btn" href="https://buy.stripe.com/5kQ7sK1V43047Gu4kWd3i03" target="_blank" rel="noopener">Choose Starter</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">Professional</div>
+        <div class="plan-price">$9,999/mo</div>
+        <div class="plan-desc">
+          For scaling businesses. Unlock advanced customization, higher throughput, and priority support for complex, mission-critical workflows.
+        </div>
+        <a class="plan-btn" href="https://buy.stripe.com/9B69ASfLUbwA0e29Fgd3i04" target="_blank" rel="noopener">Choose Professional</a>
+      </div>
+      <div class="plan">
+        <div class="plan-title">Business</div>
+        <div class="plan-price">$19,999/mo</div>
+        <div class="plan-desc">
+          For enterprises demanding the extraordinary. Enjoy unlimited API calls, bespoke engineering, and white-glove service tailored to your vision.
+        </div>
+        <a class="plan-btn" href="https://buy.stripe.com/aFacN457geIM4ui4kWd3i05" target="_blank" rel="noopener">Choose Business</a>
+      </div>
+    </div>
+    <div class="footer">
+      Contact: <a href="mailto:hello@tagore.com">hello@tagore.com</a>
+    </div>
+  </div>
+</body>
+</html>
