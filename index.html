@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Tagore – Custom API Development</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+  <title>tagore – custom api development</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
   <style>
     :root {
       --white: #FFFFFF;
@@ -12,8 +12,9 @@
       --gray: #939393;
       --dark: #23242a;
       --bg: #181818;
-      --accent: #ffd600;
-      --accent-dark: #bfa800;
+      --button-bg: #313236;
+      --button-hover: #414247;
+      --button-border: #5a5a5a;
     }
     html, body {
       height: 100%;
@@ -21,7 +22,8 @@
       padding: 0;
       background: var(--bg);
       color: var(--white);
-      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 100;
       min-height: 100vh;
       position: relative;
     }
@@ -47,41 +49,51 @@
       flex-direction: column;
       align-items: flex-start;
     }
+    .header-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 48px;
+    }
     .brand {
-      font-size: 3.2rem;
-      font-weight: 700;
+      font-size: 5rem;
+      font-weight: 100;
       color: var(--white);
-      margin-bottom: 18px;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      line-height: 1.1;
+      letter-spacing: 0.10em;
+      text-transform: lowercase;
+      line-height: 1.05;
+      text-rendering: geometricPrecision;
+      text-align: center;
     }
     .subtitle {
-      font-size: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 100;
       color: var(--gray);
-      margin-bottom: 56px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      margin-top: 10px;
+      text-align: center;
     }
     .copy {
+      font-weight: 100;
       font-size: 1.25rem;
       color: var(--light);
       margin-bottom: 56px;
       max-width: 700px;
       line-height: 1.7;
-      font-weight: 700;
       letter-spacing: 0.01em;
       display: flex;
       flex-direction: column;
-      gap: 0;
     }
     .copy-main {
       margin-bottom: 32px;
+      white-space: pre-line;
     }
     .copy-emph {
       color: var(--white);
       font-size: 1.3rem;
-      font-weight: 700;
+      font-weight: 100;
       letter-spacing: 0.02em;
       margin-top: 0;
     }
@@ -108,20 +120,20 @@
       height: 420px;
     }
     .plan:hover {
-      border: 2px solid var(--accent);
+      border: 2px solid var(--white);
       box-shadow: 0 8px 32px rgba(255,255,255,0.08);
     }
     .plan-title {
       font-size: 1.2rem;
-      font-weight: 700;
+      font-weight: 100;
       color: var(--white);
       margin-bottom: 16px;
       letter-spacing: 0.04em;
-      text-transform: uppercase;
+      text-transform: lowercase;
     }
     .plan-price {
       font-size: 2.1rem;
-      font-weight: 700;
+      font-weight: 100;
       color: var(--light);
       margin-bottom: 24px;
       letter-spacing: 0.01em;
@@ -130,31 +142,35 @@
       font-size: 1.08rem;
       color: var(--gray);
       line-height: 1.6;
-      font-weight: 700;
+      font-weight: 100;
       letter-spacing: 0.01em;
       margin-bottom: 32px;
     }
     .plan-btn {
       margin-top: auto;
       display: inline-block;
-      background: var(--accent);
-      color: #181818;
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      font-weight: 700;
+      background: var(--button-bg);
+      color: var(--white);
+      font-family: 'Roboto', Arial, sans-serif;
+      font-weight: 100;
       font-size: 1.1rem;
       letter-spacing: 0.04em;
-      border: none;
+      border: 1.5px solid var(--button-border);
       border-radius: 8px;
-      padding: 14px 36px;
+      padding: 14px 0;
       text-decoration: none;
-      box-shadow: 0 2px 12px rgba(255,214,0,0.10);
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      width: 100%;
+      min-width: 180px;
+      text-align: center;
+      box-sizing: border-box;
+      transition: background 0.2s, color 0.2s, border 0.2s;
       cursor: pointer;
+      text-transform: lowercase;
     }
     .plan-btn:hover {
-      background: var(--accent-dark);
-      color: #fff;
-      box-shadow: 0 8px 32px rgba(255,214,0,0.18);
+      background: var(--button-hover);
+      border: 1.5px solid var(--white);
+      color: var(--light);
     }
     .footer {
       margin-top: 64px;
@@ -164,13 +180,13 @@
       text-align: left;
       border-top: 1px solid var(--gray);
       padding-top: 32px;
-      font-weight: 700;
+      font-weight: 100;
       letter-spacing: 0.01em;
     }
     .footer a {
       color: var(--light);
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 100;
     }
     @media (max-width: 1000px) {
       .plans-row {
@@ -185,16 +201,22 @@
         width: 100%;
         height: auto;
       }
+      .brand {
+        font-size: 3.2rem;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="brand">Tagore</div>
-    <div class="subtitle">Custom API Development</div>
+    <div class="header-block">
+      <div class="brand">tagore</div>
+      <div class="subtitle">custom api development</div>
+    </div>
     <div class="copy">
       <div class="copy-main">
-        Accelerate your custom AI engine development.<br>
+        Accelerate your custom AI engine development.
+
         Effortlessly connect models, apps, and codebases of any kind—no matter how complex—into a unified, elegant command.
       </div>
       <div class="copy-emph">
@@ -203,28 +225,28 @@
     </div>
     <div class="plans-row">
       <div class="plan">
-        <div class="plan-title">Starter</div>
+        <div class="plan-title">starter</div>
         <div class="plan-price">$999/mo</div>
         <div class="plan-desc">
           For visionaries and agile teams. Launch your custom API journey with seamless onboarding, essential integrations, and responsive support.
         </div>
-        <a class="plan-btn" href="https://buy.stripe.com/5kQ7sK1V43047Gu4kWd3i03" target="_blank" rel="noopener">Choose Starter</a>
+        <a class="plan-btn" href="https://buy.stripe.com/5kQ7sK1V43047Gu4kWd3i03" target="_blank" rel="noopener">choose starter</a>
       </div>
       <div class="plan">
-        <div class="plan-title">Professional</div>
+        <div class="plan-title">professional</div>
         <div class="plan-price">$9,999/mo</div>
         <div class="plan-desc">
           For scaling businesses. Unlock advanced customization, higher throughput, and priority support for complex, mission-critical workflows.
         </div>
-        <a class="plan-btn" href="https://buy.stripe.com/9B69ASfLUbwA0e29Fgd3i04" target="_blank" rel="noopener">Choose Professional</a>
+        <a class="plan-btn" href="https://buy.stripe.com/9B69ASfLUbwA0e29Fgd3i04" target="_blank" rel="noopener">choose professional</a>
       </div>
       <div class="plan">
-        <div class="plan-title">Business</div>
+        <div class="plan-title">business</div>
         <div class="plan-price">$19,999/mo</div>
         <div class="plan-desc">
           For enterprises demanding the extraordinary. Enjoy unlimited API calls, bespoke engineering, and white-glove service tailored to your vision.
         </div>
-        <a class="plan-btn" href="https://buy.stripe.com/aFacN457geIM4ui4kWd3i05" target="_blank" rel="noopener">Choose Business</a>
+        <a class="plan-btn" href="https://buy.stripe.com/aFacN457geIM4ui4kWd3i05" target="_blank" rel="noopener">choose business</a>
       </div>
     </div>
     <div class="footer">
